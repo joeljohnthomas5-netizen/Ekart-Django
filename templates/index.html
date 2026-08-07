@@ -1,0 +1,761 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleHub – Premium Fashion Store</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* ===== GLOBAL ===== */
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+            padding: 12px 0;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+        }
+        .navbar-brand i {
+            color: #ff6b6b;
+        }
+/*================ HERO SECTION ================*/
+
+.hero{
+    position: relative;
+    height: 430px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 25px 25px;
+    margin: 0 12px 40px;
+}
+
+/* Background Slider */
+
+.hero-slider{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-2;
+}
+
+.hero-slider img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:fit;
+    opacity:0;
+    animation:heroSlider 15s infinite;
+}
+
+/* 3 Images */
+
+.hero-slider img:nth-child(1){
+    animation-delay:0s;
+}
+
+.hero-slider img:nth-child(2){
+    animation-delay:5s;
+}
+
+.hero-slider img:nth-child(3){
+    animation-delay:10s;
+}
+
+/* Dark Overlay */
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.30)
+    );
+    z-index:-1;
+}
+
+/* Glass Content */
+
+.hero-content{
+
+    background:rgba(173, 31, 31, 0.12);
+
+    backdrop-filter:blur(12px);
+
+    padding:35px 45px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    color:white;
+
+    max-width:600px;
+
+    animation:fadeUp .8s ease;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+/* Heading */
+
+.hero-content h1{
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+    color:white;
+
+}
+
+.hero-content span{
+
+    color:#ffd93d;
+
+}
+
+/* Subtitle */
+
+.hero-content p{
+
+    font-size:1rem;
+
+    color:#f1f1f1;
+
+    margin-bottom:25px;
+
+    line-height:1.7;
+
+}
+
+/* Button */
+
+.hero-btn{
+
+    display:inline-block;
+
+    padding:12px 30px;
+
+    background:#6c5ce7;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.hero-btn:hover{
+
+    background:#5a4bd1;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(108,92,231,.4);
+
+}
+
+/* Slider Animation */
+
+@keyframes heroSlider{
+
+0%{
+opacity:0;
+transform:scale(1);
+}
+
+8%{
+opacity:1;
+}
+
+30%{
+opacity:1;
+transform:scale(1.05);
+}
+
+38%{
+opacity:0;
+}
+
+100%{
+opacity:0;
+}
+
+}
+
+/* Content Animation */
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero{
+
+height:300px;
+
+margin:0 8px 25px;
+
+}
+
+.hero-content{
+
+padding:25px;
+
+width:90%;
+
+}
+
+.hero-content h1{
+
+font-size:2rem;
+
+}
+
+.hero-content p{
+
+font-size:.9rem;
+
+}
+
+.hero-btn{
+
+padding:10px 24px;
+
+font-size:15px;
+
+}
+
+}
+
+
+        /* ===== CATEGORY BOXES ===== */
+        .category-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+            transition: .3s;
+            cursor: default;
+            border: 1px solid rgba(0, 0, 0, .04);
+        }
+        .category-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .1);
+        }
+        .category-box i {
+            font-size: 32px;
+            color: #6c5ce7;
+            margin-bottom: 8px;
+        }
+        .category-box h5 {
+            font-weight: 600;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== PRODUCT CARDS ===== */
+        .section-title {
+            font-weight: 700;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #6c5ce7;
+            border-radius: 2px;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+            transition: .3s;
+            background: white;
+            overflow: hidden;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
+        }
+        .product-card .product-img {
+            height: 220px;
+            object-fit: contain;
+            padding: 15px;
+            background: #fafafa;
+            width: 100%;
+        }
+        .product-card .card-body {
+            padding: 1.2rem 1.2rem 1.5rem;
+        }
+        .product-card .product-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .product-card .product-price {
+            color: #2d3436;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .product-card .product-price span {
+            color: #6c5ce7;
+        }
+        .product-card .btn-primary {
+            background: #6c5ce7;
+            border: none;
+            border-radius: 8px;
+            padding: 8px;
+            font-weight: 600;
+            transition: .3s;
+        }
+        .product-card .btn-primary:hover {
+            background: #5a4bd1;
+            transform: scale(1.02);
+        }
+        .product-card .btn-danger {
+            border-radius: 8px;
+            padding: 8px;
+            font-weight: 600;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+        }
+        .about-section h2 {
+            font-weight: 700;
+            color: #2d3436;
+        }
+        .about-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .about-section ul li {
+            padding: 8px 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-section ul li i {
+            color: #6c5ce7;
+            font-size: 1.2rem;
+            width: 28px;
+        }
+        .about-img {
+            border-radius: 12px;
+            max-height: 320px;
+            object-fit: cover;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a2e;
+            color: #e8e8e8;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        footer h4 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            color: white;
+        }
+        footer a {
+            color: #b8b8b8;
+            text-decoration: none;
+            transition: .2s;
+        }
+        footer a:hover {
+            color: #ffd93d;
+            text-decoration: none;
+        }
+        footer .brand-footer {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        footer .brand-footer i {
+            color: #ff6b6b;
+        }
+        footer hr {
+            border-color: rgba(255, 255, 255, .08);
+            margin: 25px 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 260px;
+                border-radius: 0 0 20px 20px;
+                margin: 0 10px 20px 10px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .about-section {
+                padding: 25px;
+            }
+            .product-card .product-img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR -->
+    <!-- ============================================================ -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <i class="fas fa-crown"></i> StyleHub
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a href="{% url 'index' %}" class="nav-link active fw-semibold">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'view_customer_products' %}" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'view_cart' %}" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                        </a>
+                    </li>
+
+                    {% if request.session.cid %}
+                        <li class="nav-item">
+                            <a href="{% url 'profile' %}" class="nav-link">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="nav-link">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'register' %}" class="nav-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MESSAGES -->
+    <!-- ============================================================ -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- ============================================================ -->
+    <!-- HERO -->
+    <!-- ============================================================ -->
+    <section class="hero">
+
+    <!-- Background Slider -->
+    <div class="hero-slider">
+
+        <img src="{% static 'img/banner1.jpg' %}" alt="Banner 1">
+        <img src="{% static 'img/banner2.jpg' %}" alt="Banner 2">
+        <img src="{% static 'img/banner3.avif' %}" alt="Banner 3">
+        <img src="{% static 'img/banner4.png' %}" alt="Banner 4">
+        <img src="{% static 'img/banner5.jpeg' %}" alt="Banner 4">
+        <img src="{% static 'img/banner6.jpeg' %}" alt="Banner 4">
+
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+
+        <h1>
+            Style <span>Redefined</span>
+        </h1>
+
+        <p>
+            Discover premium fashion, latest collections, and timeless styles curated specially for you.
+        </p>
+
+        <a href="{% url 'view_customer_products' %}" class="hero-btn">
+            <i class="fas fa-shopping-bag me-2"></i>
+            Explore Collection
+        </a>
+
+    </div>
+
+</section>
+
+    <!-- ============================================================ -->
+    <!-- CATEGORIES -->
+    <!-- ============================================================ -->
+    <div class="container mt-4">
+    <div class="row g-3">
+
+        <!-- Men's Fashion -->
+        <div class="col-md-3 col-6">
+            <div class="category-box">
+                <i class="fas fa-user-tie"></i>
+                <h5>Men's Fashion</h5>
+            </div>
+        </div>
+
+        <!-- Gen Z Drips -->
+        <div class="col-md-3 col-6">
+            <div class="category-box">
+                <i class="fas fa-fire"></i>
+                <h5>Gen Z Drips</h5>
+            </div>
+        </div>
+
+        <!-- Women's Fashion -->
+        <div class="col-md-3 col-6">
+            <div class="category-box">
+                <i class="fas fa-person-dress"></i>
+                <h5>Women</h5>
+            </div>
+        </div>
+
+        <!-- Kids -->
+        <div class="col-md-3 col-6">
+            <div class="category-box">
+                <i class="fas fa-child"></i>
+                <h5>Kids</h5>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <!-- ============================================================ -->
+    <!-- FEATURED PRODUCTS -->
+    <!-- ============================================================ -->
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title">Featured Products</h2>
+        </div>
+        
+        <!-- Debug: Show product count -->
+        <div class="text-center mb-3" style="font-size: 0.9rem; color: #6c757d;">
+            {% if all_products %}
+                Showing {{ all_products|length }} product(s)
+            {% else %}
+                No products available
+            {% endif %}
+        </div>
+        
+        <div class="row g-4">
+            {% for product in all_products %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-card card">
+
+                        {% if product.Product_image %}
+                            <img src="{{ product.Product_image.url }}" class="product-img" alt="{{ product.Product_name }}">
+                        {% else %}
+                            <img src="{% static 'images/no-image.png' %}" class="product-img" alt="No image">
+                        {% endif %}
+
+                        <div class="card-body text-center d-flex flex-column">
+                            <h6 class="product-name">{{ product.Product_name }}</h6>
+                            <h5 class="product-price">₹<span>{{ product.Product_price }}</span></h5>
+
+                            <p class="mb-2">
+                                {% if product.Product_stock > 0 %}
+                                    <span class="badge bg-success bg-opacity-10 text-success">In Stock</span>
+                                {% else %}
+                                    <span class="badge bg-danger bg-opacity-10 text-danger">Out of Stock</span>
+                                {% endif %}
+                            </p>
+
+                            {% if product.Product_stock > 0 %}
+                                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary mt-auto">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                                </a>
+                            {% else %}
+                                <button class="btn btn-danger mt-auto" disabled>
+                                    <i class="fas fa-times me-1"></i> Out of Stock
+                                </button>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center py-5">
+                    <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">No products available</h5>
+                    <p class="text-muted">Please add some products to your store.</p>
+                    {% if request.session.cid %}
+                        <a href="/admin/" class="btn btn-primary mt-2">
+                            <i class="fas fa-plus me-2"></i> Add Products
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- View All Products Button -->
+        <div class="text-center mt-4">
+            <a href="{% url 'view_customer_products' %}" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-eye me-2"></i> View All Products
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ABOUT -->
+    <!-- ============================================================ -->
+    <div class="container mt-5">
+        <div class="about-section row align-items-center">
+            <div class="col-md-6">
+                {% load static %}
+
+            <img src="{% static 'img/logo.png' %}" class="about-img" alt="About StyleHub">
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0">
+                <h2>Why Choose StyleHub?</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Best Quality Products</li>
+                    <li><i class="fas fa-lock"></i> Secure Payments</li>
+                    <li><i class="fas fa-truck"></i> Fast Delivery</li>
+                    <li><i class="fas fa-undo"></i> Easy Returns</li>
+                    <li><i class="fas fa-headset"></i> 24/7 Support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="brand-footer">
+                        <i class="fas fa-crown"></i> StyleHub
+                    </div>
+                    <p class="mt-2" style="opacity:0.7;">Your premium destination for fashion & lifestyle.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <p><a href="{% url 'index' %}">Home</a></p>
+                    <p><a href="{% url 'view_customer_products' %}">Products</a></p>
+                    <p><a href="{% url 'view_cart' %}">Cart</a></p>
+                    {% if request.session.cid %}
+                        <p><a href="{% url 'logout' %}">Logout</a></p>
+                    {% else %}
+                        <p><a href="{% url 'login' %}">Login</a></p>
+                        <p><a href="{% url 'register' %}">Register</a></p>
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope me-2"></i> support@stylehub.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Mumbai, India</p>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center mb-0" style="opacity:0.6; font-size:0.9rem;">
+                &copy; 2026 StyleHub. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+</html>

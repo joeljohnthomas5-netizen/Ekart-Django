@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>EShopper - My Profile</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+    
+    <style>
+        .profile-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.08);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 5px solid #007bff;
+            transition: all 0.3s;
+        }
+        .profile-image:hover {
+            transform: scale(1.05);
+            border-color: #0056b3;
+        }
+        .profile-image i {
+            font-size: 70px;
+            color: #007bff;
+        }
+        .profile-info-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        .profile-info-item:hover {
+            background-color: #f8f9fa;
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+        .profile-info-item:last-child {
+            border-bottom: none;
+        }
+        .profile-label {
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .profile-value {
+            font-size: 18px;
+            color: #343a40;
+            margin-top: 3px;
+            font-weight: 500;
+        }
+        .profile-icon {
+            width: 45px;
+            height: 45px;
+            background: #007bff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .profile-stats {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        .profile-stats:hover {
+            background: #e9ecef;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .profile-stats h3 {
+            color: #007bff;
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .profile-stats p {
+            color: #6c757d;
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+        .btn-action {
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            text-decoration: none;
+            border-bottom: none;
+        }
+        .section-title::after {
+            content: none;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #007bff;
+            display: none;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-secondary py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark" href="">FAQs</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Help</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Support</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-dark pl-2" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="{% url 'index' %}" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                </a>
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-6 text-right">
+                <a href="" class="btn border">
+                    <i class="fas fa-heart text-primary"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary"></i>
+                    <span class="badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="navbar-nav ml-auto py-0">
+    {% if request.session.cid %}
+        <!-- Logged in user -->
+        <a href="{% url 'profile' %}" class="nav-item nav-link {% if request.path == '/profile/' %}active{% endif %}">
+            <i class="fas fa-user text-primary"></i> 
+            <span class="font-weight-semi-bold">{{ request.session.user_name|default:"My Account" }}</span>
+        </a>
+        <a href="{% url 'logout' %}" class="nav-item nav-link">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    {% else %}
+        <!-- Not logged in -->
+        <a href="{% url 'login' %}" class="nav-item nav-link">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+        <a href="{% url 'register' %}" class="nav-item nav-link">
+            <i class="fas fa-user-plus"></i> Register
+        </a>
+    {% endif %}
+</div>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">My Profile</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="{% url 'index' %}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">My Profile</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Profile Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="col-lg-12">
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="row px-xl-5">
+            <!-- Profile Card -->
+            <div class="col-lg-8 mx-auto">
+                <div class="profile-card">
+                    <div class="text-center mb-4">
+                        <div class="profile-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h2 class="font-weight-semi-bold mb-1">{{ user.name }}</h2>
+                        <p class="text-muted">Member since {{ user.created_at|date:"F d, Y" }}</p>
+                    </div>
+
+                    <!-- Profile Information -->
+                    <div class="section-title text-center">
+                        <h4 class="font-weight-semi-bold">Profile Information</h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <!-- Name -->
+                            <div class="profile-info-item d-flex align-items-center">
+                                <div class="profile-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <div class="profile-label">Full Name</div>
+                                    <div class="profile-value">{{ user.name }}</div>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="profile-info-item d-flex align-items-center">
+                                <div class="profile-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="profile-label">Email Address</div>
+                                    <div class="profile-value">{{ user.email }}</div>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="profile-info-item d-flex align-items-center">
+                                <div class="profile-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <div class="profile-label">Phone Number</div>
+                                    <div class="profile-value">{{ user.phone }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="profile-stats">
+                                <h3>0</h3>
+                                <p><i class="fas fa-shopping-bag text-primary mr-1"></i> Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="profile-stats">
+                                <h3>0</h3>
+                                <p><i class="fas fa-heart text-primary mr-1"></i> Wishlist Items</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="profile-stats">
+                                <h3>0</h3>
+                                <p><i class="fas fa-star text-primary mr-1"></i> Reviews</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="text-center mt-4 pt-3 border-top">
+                        <a href="#" class="btn btn-primary btn-action">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </a>
+                        <a href="#" class="btn btn-success btn-action">
+                            <i class="fas fa-key"></i> Change Password
+                        </a>
+                        <a href="{% url 'logout' %}" class="btn btn-danger btn-action">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Orders Section (Optional) -->
+                <div class="profile-card mt-4">
+                    <div class="section-title text-center">
+                        <h4 class="font-weight-semi-bold">Recent Orders</h4>
+                    </div>
+                    <div class="text-center py-4">
+                        <i class="fas fa-shopping-bag" style="font-size: 48px; color: #dee2e6;"></i>
+                        <p class="text-muted mt-3">You haven't placed any orders yet.</p>
+                        <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Profile End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a href="" class="text-decoration-none">
+                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
+                </a>
+                <p>Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum dolore amet erat.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="{% url 'index' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="{% url 'index' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control border-0 py-4" placeholder="Your Email" required="required" />
+                            </div>
+                            <div>
+                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top border-light mx-xl-5 py-4">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-dark">
+                    &copy; <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. 
+                    Designed by <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="{% static 'img/payments.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

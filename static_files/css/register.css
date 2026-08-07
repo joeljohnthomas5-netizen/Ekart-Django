@@ -1,0 +1,138 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#EDF1FF;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* Container */
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* Registration Card */
+.register-box{
+    width:420px;
+    background:#ffffff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.12);
+    border-top:6px solid #D19C97;
+}
+
+/* Heading */
+.register-box h2{
+    text-align:center;
+    color:#1C1C1C;
+    margin-bottom:8px;
+    font-size:32px;
+    font-weight:600;
+}
+
+.register-box p{
+    text-align:center;
+    color:#777;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+/* Input Fields */
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    color:#444;
+    font-size:15px;
+    font-weight:500;
+}
+
+.input-group input{
+    width:100%;
+    padding:13px 15px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+    background:#fff;
+}
+
+.input-group input:focus{
+    border-color:#D19C97;
+    box-shadow:0 0 8px rgba(209,156,151,.35);
+}
+
+/* Placeholder */
+.input-group input::placeholder{
+    color:#aaa;
+}
+
+/* Register Button */
+button{
+    width:100%;
+    padding:14px;
+    background:#D19C97;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#C28782;
+    transform:translateY(-2px);
+    box-shadow:0 8px 15px rgba(209,156,151,.4);
+}
+
+/* Login Link */
+.login-link{
+    margin-top:20px;
+    text-align:center;
+    font-size:15px;
+    color:#555;
+}
+
+.login-link a{
+    color:#D19C97;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.login-link a:hover{
+    text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:480px){
+
+    .register-box{
+        width:100%;
+        padding:25px;
+    }
+
+    .register-box h2{
+        font-size:28px;
+    }
+
+}

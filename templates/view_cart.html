@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shopping Cart</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+body{
+    background:#f5f5f5;
+}
+
+.container{
+    margin-top:40px;
+}
+
+.card{
+    border:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+table img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+}
+
+tfoot{
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="card-header bg-primary text-white">
+    <h3><i class="fas fa-shopping-cart"></i> My Cart</h3>
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered table-hover text-center">
+
+<thead class="table-dark">
+<tr>
+    <th>Image</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+    <!-- Removed the Remove column -->
+</tr>
+</thead>
+
+<tbody>
+
+{% for item in cart_items %}
+
+<tr>
+
+<td>
+    <img src="{{ item.product.Product_image.url }}">
+</td>
+
+<td>{{ item.product.Product_name }}</td>
+
+<td>₹{{ item.product.Product_price }}</td>
+
+<td>
+    <a href="{% url 'decrease_quantity' item.id %}" class="btn btn-sm btn-danger">
+        <i class="fas fa-minus"></i>
+    </a>
+
+    <span class="mx-3 fw-bold">{{ item.quantity }}</span>
+
+    <a href="{% url 'increase_quantity' item.id %}" class="btn btn-sm btn-success">
+        <i class="fas fa-plus"></i>
+    </a>
+</td>
+
+<td>₹{{ item.price }}</td>
+
+<!-- Removed the Remove column cell -->
+
+</tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="5">Your Cart is Empty</td>
+    <!-- Changed colspan from 6 to 5 -->
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+<tfoot>
+<tr>
+    <td colspan="3" class="text-end">Grand Total</td>
+    <!-- Changed colspan from 4 to 3 -->
+    <td colspan="2">
+        ₹{{ total }}
+    </td>
+</tr>
+</tfoot>
+
+</table>
+
+<div class="text-end">
+
+<a href="{% url 'view_customer_products' %}" class="btn btn-secondary">
+    Continue Shopping
+</a>
+
+<a href="{% url 'checkout' %}" class="btn btn-success">
+    Checkout
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
