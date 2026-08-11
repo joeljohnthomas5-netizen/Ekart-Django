@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-eyy!kd$rlhlbumb6r*wwo3x3%wc6p^5ngkb%qt@p(*1#i7m2$='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = ['django-ekart-project.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'django-ekart-project.onrender.com']
 
 # Application definition
 
@@ -73,14 +75,15 @@ WSGI_APPLICATION = 'ekart.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'ekartdb',
-        'USER':'postgres',
-        'PASSWORD':'sidhu',
+        'NAME': 'ekartdb',
+        'USER': 'postgres',
+        'PASSWORD': '1234',   # the one used to log into pgAdmin
         'HOST': 'localhost',
-        'PORT':'5432',
+        'PORT': '5432',
     }
 }
 
