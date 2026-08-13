@@ -1,6 +1,6 @@
-asgriref==3.23.2
+asgriref==3.12.1
 Django==6.1
-pillow
+pillow==12.3.0
 psycopg2-binary==2.9.12
 sqlparse==0.5.5
 gunicorn==23.0.0
