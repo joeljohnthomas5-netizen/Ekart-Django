@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,15 +79,11 @@ WSGI_APPLICATION = 'ekart.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ekartdb',
-        'USER': 'postgres',
-        'PASSWORD': '1234',   # the one used to log into pgAdmin
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=config('postgresql://ekart_db_e248_user:hac6wjNpOiFQ6eNOlA14yE2fGnKYCYdz@dpg-d9vtgt61egvs73fci5fg-a/ekart_db_e248'))
+}
 }
 
 
