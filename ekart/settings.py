@@ -84,7 +84,6 @@ WSGI_APPLICATION = 'ekart.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(default=config('postgresql://ekart_db_e248_user:hac6wjNpOiFQ6eNOlA14yE2fGnKYCYdz@dpg-d9vtgt61egvs73fci5fg-a/ekart_db_e248'))
 }
-}
 
 
 # Password validation
